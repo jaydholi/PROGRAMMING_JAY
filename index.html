@@ -433,29 +433,59 @@
       opacity: 1;
     }
 
-    /* Style form controls for better visibility on dark background */
+    /* Make input and textarea text color white */
     form input,
     form textarea,
     form select {
       background-color: #1a1a1a;
-      /* Dark background */
+      /* Dark background for fields */
       color: white;
-      /* Input text color */
-      border: 1px solid #444;
-      /* Optional border styling */
+      /* Text color */
+      border: 1px solid #333;
+      /* Optional border */
       padding: 10px;
       border-radius: 5px;
     }
 
-    /* Optional: Add styling on focus for better user experience */
+    /* Style placeholder text to be white */
+    form input::placeholder,
+    form textarea::placeholder,
+    form select::placeholder {
+      color: white;
+      opacity: 1;
+      /* Ensures full opacity */
+    }
+
+    /* Support for all major browsers */
+    form input::-webkit-input-placeholder,
+    form textarea::-webkit-input-placeholder {
+      color: white;
+    }
+
+    form input:-moz-placeholder,
+    form textarea:-moz-placeholder {
+      color: white;
+    }
+
+    form input::-moz-placeholder,
+    form textarea::-moz-placeholder {
+      color: white;
+    }
+
+    form input:-ms-input-placeholder,
+    form textarea:-ms-input-placeholder {
+      color: white;
+    }
+
+    /* Optional: Focus effect */
     form input:focus,
     form textarea:focus,
     form select:focus {
       outline: none;
       border-color: #007bff;
-      /* Bootstrap primary color */
       box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
     }
+
 
     /* Responsive adjustments */
     @media (max-width: 768px) {
