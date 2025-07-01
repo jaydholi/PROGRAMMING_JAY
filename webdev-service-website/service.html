@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services | Programming_Jay Web Solutions</title>
+  <meta name="description" content="Professional web development services including custom websites, e-commerce solutions, SEO optimization and more.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Same CSS as index.html */
+    :root {
+      --primary-color: #4361ee;
+      --secondary-color: #3a0ca3;
+      --accent-color: #4cc9f0;
+      --dark-bg: #0f172a;
+      --darker-bg: #020617;
+      --card-bg: #1e293b;
+      --text-light: #f8fafc;
+      --text-muted: #94a3b8;
+      --success-color: #10b981;
+      --warning-color: #f59e0b;
+      --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    .navbar {
+      background-color: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      padding: 0.5rem 0;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-brand i {
+      margin-right: 0.5rem;
+      font-size: 1.8rem;
+    }
+
+    .nav-link {
+      color: var(--text-light);
+      font-weight: 500;
+      margin: 0 0.5rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background: var(--gradient-primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--accent-color);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9)),
+        url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      padding: 180px 0 120px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 50%, rgba(67, 97, 238, 0.15) 0%, transparent 40%);
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(to right, #fff, var(--accent-color));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.2;
+    }
+
+    .hero p.lead {
+      font-size: 1.35rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .btn-primary {
+      background: var(--gradient-primary);
+      border: none;
+      padding: 0.8rem 2rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border-radius: 50px;
+      box-shadow: 0 4px 15px rgba(67, 97, 238, 0.4);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(67, 97, 238, 0.6);
+    }
+
+    .section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .section-title {
+      font-weight: 700;
+      margin-bottom: 60px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 4px;
+      background: var(--gradient-primary);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .card-service {
+      background: var(--card-bg);
+      border: none;
+      padding: 30px;
+      border-radius: 15px;
+      transition: all 0.4s ease;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .card-service::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), transparent);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card-service:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      border-color: rgba(67, 97, 238, 0.3);
+    }
+
+    .card-service:hover::before {
+      opacity: 1;
+    }
+
+    .card-service i {
+      font-size: 2.5rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .feature-list li {
+      margin-bottom: 1rem;
+      position: relative;
+      padding-left: 30px;
+      color: var(--text-muted);
+    }
+
+    .feature-list li::before {
+      content: '\f00c';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    footer {
+      background: var(--darker-bg);
+      padding: 60px 0 20px;
+      position: relative;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-links {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-color);
+      transform: translateX(5px);
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--card-bg);
+      color: var(--text-light);
+      border-radius: 50%;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .social-icons a:hover {
+      background: var(--gradient-primary);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+      border-color: transparent;
+    }
+
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(45deg, #25D366, #128C7E);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
+      z-index: 1000;
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.1) rotate(10deg);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
+    /* Process Steps */
+    .process-step {
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+    
+    .process-step .step-number {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.5rem;
+      margin: 0 auto 15px;
+    }
+    
+    .process-step h5 {
+      margin-bottom: 10px;
+    }
+    
+    .process-step p {
+      color: var(--text-muted);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .hero p.lead {
+        font-size: 1.1rem;
+      }
+      .section {
+        padding: 70px 0;
+      }
+      .navbar-brand {
+        font-size: 1.2rem;
+      }
+      .navbar-brand i {
+        font-size: 1.5rem;
+      }
+      .process-step {
+        margin-bottom: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><i class="fas fa-code"></i>Programming_Jay</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="internship.html">Internship</a></li>
+          <li class="nav-item"><a class="nav-link" href="training.html">Training</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Services Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="animate__animated animate__fadeInDown">Our Professional Services</h1>
+      <p class="lead animate__animated animate__fadeIn animate__delay-1s">Comprehensive web solutions tailored to your business needs, from simple websites to complex web applications.</p>
+    </div>
+  </section>
+
+  <!-- Services Grid Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center section-title">What We Offer</h2>
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="card-service">
+            <i class="fas fa-laptop-code"></i>
+            <h3>Custom Web Development</h3>
+            <p>Bespoke websites built with modern technologies to perfectly match your business requirements and brand identity.</p>
+            <ul class="feature-list mt-3">
+              <li>Responsive design</li>
+              <li>Custom CMS solutions</li>
+              <li>API integrations</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card-service">
+            <i class="fas fa-shopping-cart"></i>
+            <h3>E-Commerce Solutions</h3>
+            <p>Powerful online stores with secure payment gateways, inventory management, and marketing integrations.</p>
+            <ul class="feature-list mt-3">
+              <li>WooCommerce/Shopify</li>
+              <li>Payment processing</li>
+              <li>Product management</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card-service">
+            <i class="fas fa-mobile-alt"></i>
+            <h3>Mobile Responsive Design</h3>
+            <p>Flawless user experience across all devices with mobile-first approach and performance optimization.</p>
+            <ul class="feature-list mt-3">
+              <li>Mobile-first approach</li>
+              <li>Cross-browser testing</li>
+              <li>Performance optimized</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card-service">
+            <i class="fas fa-search"></i>
+            <h3>SEO Optimization</h3>
+            <p>Comprehensive search engine optimization to improve your visibility and organic traffic growth.</p>
+            <ul class="feature-list mt-3">
+              <li>Keyword research</li>
+              <li>On-page optimization</li>
+              <li>Technical SEO</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card-service">
+            <i class="fas fa-tools"></i>
+            <h3>Maintenance & Support</h3>
+            <p>Reliable ongoing support, updates, and maintenance packages to keep your website running smoothly.</p>
+            <ul class="feature-list mt-3">
+              <li>Regular updates</li>
+              <li>Security patches</li>
+              <li>Backup solutions</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card-service">
+            <i class="fas fa-chart-line"></i>
+            <h3>Performance Optimization</h3>
+            <p>Speed enhancements and technical improvements to boost your site's performance and conversion rates.</p>
+            <ul class="feature-list mt-3">
+              <li>Page speed optimization</li>
+              <li>Database optimization</li>
+              <li>Caching solutions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Process Section -->
+  <section class="section bg-dark">
+    <div class="container">
+      <h2 class="text-center section-title">Our Development Process</h2>
+      <div class="row mt-5">
+        <div class="col-lg-3 col-md-6">
+          <div class="process-step">
+            <div class="step-number">1</div>
+            <h5>Discovery</h5>
+            <p>Requirements gathering & planning</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="process-step">
+            <div class="step-number">2</div>
+            <h5>Design</h5>
+            <p>UI/UX prototyping</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="process-step">
+            <div class="step-number">3</div>
+            <h5>Development</h5>
+            <p>Coding & implementation</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="process-step">
+            <div class="step-number">4</div>
+            <h5>Delivery</h5>
+            <p>Testing & launch</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section">
+    <div class="container text-center">
+      <h2 class="mb-4">Ready to Transform Your Online Presence?</h2>
+      <p class="lead mb-5">Let's discuss how we can help you achieve your business goals with a custom web solution.</p>
+      <div class="d-flex justify-content-center gap-3">
+        <a href="contact.html" class="btn btn-primary btn-lg px-4">Get Started</a>
+        <a href="tel:+916351240826" class="btn btn-outline-light btn-lg px-4">Call Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h3 class="mb-4">Programming_Jay</h3>
+          <p>Providing cutting-edge web solutions and professional training to help businesses and individuals succeed in the digital world.</p>
+          <div class="social-icons mt-4">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h4 class="mb-4">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="internship.html">Internship</a></li>
+            <li><a href="training.html">Training</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h4 class="mb-4">Services</h4>
+          <ul class="footer-links">
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">E-Commerce</a></li>
+            <li><a href="#">SEO</a></li>
+            <li><a href="#">Maintenance</a></li>
+            <li><a href="#">Consulting</a></li>
+            <li><a href="#">Training</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <h4 class="mb-4">Contact Us</h4>
+          <p><i class="fas fa-map-marker-alt me-2"></i> Bhuj, Kutch, Gujarat, India</p>
+          <p><i class="fas fa-envelope me-2"></i> developer.jay20@gmail.com</p>
+          <p><i class="fas fa-phone-alt me-2"></i> +91 63512 40826</p>
+          <form class="mt-4">
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Your Email">
+              <button class="btn btn-primary" type="submit">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <hr class="my-5 bg-secondary">
+      <div class="text-center">
+        <p class="mb-0">© 2025 Programming_Jay. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/916351240826" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Back to Top Button -->
+  <a href="#" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+
+      // Back to top button visibility
+      const backToTop = document.querySelector('.back-to-top');
+      if (window.scrollY > 300) {
+        backToTop.classList.add('active');
+      } else {
+        backToTop.classList.remove('active');
+      }
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+
+          // Update active nav link
+          document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+          });
+          this.classList.add('active');
+        }
+      });
+    });
+
+    // Back to top button
+    document.querySelector('.back-to-top').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Initialize animations when page loads
+    window.onload = function() {
+      // Setup scroll animations
+      const fadeElements = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      fadeElements.forEach(element => {
+        observer.observe(element);
+      });
+    };
+  </script>
+</body>
+</html>

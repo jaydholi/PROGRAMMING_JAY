@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website Maintenance Plans - India</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #1a5c1e;
+      --secondary-color: #2e7d32;
+      --accent-color: #4caf50;
+      --light-color: #f8f9fa;
+      --dark-color: #212529;
+      --text-color: #333;
+      --border-radius: 8px;
+      --box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      background-color: #f5f7fa;
+      color: var(--text-color);
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+      opacity: 0.1;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--primary-color);
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--accent-color);
+      border-radius: 3px;
+    }
+
+    .plans-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .plan-card {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 1.5rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .plan-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .plan-card.popular::before {
+      content: "Most Popular";
+      position: absolute;
+      top: 15px;
+      right: -30px;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 0.25rem 2rem;
+      font-size: 0.8rem;
+      transform: rotate(45deg);
+      transform-origin: center;
+      z-index: 1;
+    }
+
+    .plan-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .plan-price {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent-color);
+      font-weight: 700;
+    }
+
+    .plan-price span {
+      font-size: 0.9rem;
+      color: var(--text-color);
+      font-weight: normal;
+    }
+
+    .plan-benefits {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .plan-benefits li {
+      margin-bottom: 0.75rem;
+      padding-left: 1.75rem;
+      position: relative;
+    }
+
+    .plan-benefits li::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: var(--accent-color);
+    }
+
+    .plan-benefits li.disabled {
+      color: #999;
+    }
+
+    .plan-benefits li.disabled::before {
+      content: "\f00d";
+      color: #ccc;
+    }
+
+    .plan-btn {
+      display: block;
+      width: 100%;
+      padding: 0.75rem;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: var(--border-radius);
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .plan-btn:hover {
+      background-color: var(--secondary-color);
+    }
+
+    .plan-btn.secondary {
+      background-color: transparent;
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+      margin-top: 0.5rem;
+    }
+
+    .plan-btn.secondary:hover {
+      background-color: rgba(26, 92, 30, 0.1);
+    }
+
+    .form-container {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--dark-color);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .btn:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    .btn-block {
+      display: block;
+      width: 100%;
+    }
+
+    .btn-accent {
+      background-color: var(--accent-color);
+    }
+
+    .btn-accent:hover {
+      background-color: #3d8b40;
+    }
+
+    .suggestion-result {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      border-radius: var(--border-radius);
+      background-color: #e8f5e9;
+      border-left: 4px solid var(--accent-color);
+    }
+
+    .suggestion-result.error {
+      background-color: #ffebee;
+      border-left-color: #f44336;
+    }
+
+    .suggestion-result p {
+      margin-bottom: 0.5rem;
+    }
+
+    .suggestion-result a {
+      color: var(--primary-color);
+      font-weight: 500;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .suggestion-result a:hover {
+      text-decoration: underline;
+    }
+
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s ease-in-out infinite;
+      margin-right: 10px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Tooltip */
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      margin-left: 5px;
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 200px;
+      background-color: var(--dark-color);
+      color: #fff;
+      text-align: center;
+      border-radius: var(--border-radius);
+      padding: 0.5rem;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 0.85rem;
+      font-weight: normal;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .plans-container {
+        grid-template-columns: 1fr;
+      }
+
+      .form-container {
+        padding: 1.5rem;
+      }
+    }
+
+    /* PDF Template (hidden) */
+    #pdf-template {
+      position: absolute;
+      left: -9999px;
+      width: 210mm;
+      min-height: 297mm;
+      padding: 15mm;
+      box-sizing: border-box;
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      background-color: white;
+    }
+
+    .pdf-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--primary-color);
+    }
+
+    .pdf-logo {
+      height: 50px;
+    }
+
+    .pdf-company-info {
+      text-align: right;
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .pdf-title {
+      color: var(--primary-color);
+      text-align: center;
+      margin: 25px 0;
+      font-size: 1.8em;
+    }
+
+    .pdf-client-info {
+      background: #f8f8f8;
+      padding: 15px;
+      border-radius: var(--border-radius);
+      margin-bottom: 25px;
+    }
+
+    .pdf-client-info h3 {
+      margin-top: 0;
+      color: var(--primary-color);
+    }
+
+    .pdf-recommendation {
+      background: #e8f5e9;
+      padding: 15px;
+      border-left: 4px solid var(--accent-color);
+      margin-bottom: 25px;
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    }
+
+    .pdf-plans-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .pdf-plan-card {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      border: 1px solid #e0e0e0;
+    }
+
+    .pdf-plan-title {
+      font-size: 1.1em;
+      margin: 0 0 8px 0;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .pdf-plan-price {
+      font-size: 1em;
+      margin: 0 0 12px 0;
+      color: var(--accent-color);
+      font-weight: bold;
+    }
+
+    .pdf-plan-benefits {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.9em;
+    }
+
+    .pdf-plan-benefits li {
+      margin-bottom: 6px;
+      padding-left: 22px;
+      position: relative;
+    }
+
+    .pdf-plan-benefits li::before {
+      content: "✓";
+      position: absolute;
+      left: 5px;
+      color: var(--accent-color);
+    }
+
+    .pdf-footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+      text-align: right;
+    }
+
+    .pdf-signature {
+      margin-top: 40px;
+      display: inline-block;
+    }
+
+    .pdf-date {
+      text-align: left;
+      margin-top: 40px;
+      color: #666;
+    }
+  </style>
+  <!-- jsPDF library for PDF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <h1>Website Maintenance Plans</h1>
+    <p>Professional website care tailored for your business</p>
+  </header>
+
+  <div class="container">
+    <h2 class="section-title">Choose Your Maintenance Plan</h2>
+    
+    <div class="plans-container">
+      <div class="plan-card">
+        <h3 class="plan-title">Basic Care</h3>
+        <p class="plan-price">₹2,000 <span>/ year</span></p>
+        <ul class="plan-benefits">
+          <li>Monthly Website Backup</li>
+          <li>Minor Content Updates</li>
+          <li>Basic Security Monitoring</li>
+          <li>Email Support (48hr response)</li>
+          <li class="disabled">Performance Optimization</li>
+          <li class="disabled">Plugin Updates</li>
+        </ul>
+        <button class="plan-btn" onclick="selectPlan('Basic')">Select Plan</button>
+        <a href="#" class="plan-btn secondary" onclick="highlightPlan('Basic Care')">Learn More</a>
+      </div>
+
+      <div class="plan-card">
+        <h3 class="plan-title">Standard Care</h3>
+        <p class="plan-price">₹4,000 <span>/ year</span></p>
+        <ul class="plan-benefits">
+          <li>Bi-weekly Backups</li>
+          <li>Performance Optimization</li>
+          <li>Plugin/Theme Updates</li>
+          <li>Security Updates</li>
+          <li>Priority Support (24hr response)</li>
+          <li class="disabled">Malware Scanning</li>
+        </ul>
+        <button class="plan-btn" onclick="selectPlan('Standard')">Select Plan</button>
+        <a href="#" class="plan-btn secondary" onclick="highlightPlan('Standard Care')">Learn More</a>
+      </div>
+
+      <div class="plan-card popular">
+        <h3 class="plan-title">Advanced Care</h3>
+        <p class="plan-price">₹7,000 <span>/ year</span></p>
+        <ul class="plan-benefits">
+          <li>Weekly Backups</li>
+          <li>Malware Scanning</li>
+          <li>Speed Optimization</li>
+          <li>Analytics Setup</li>
+          <li>SEO Basic Optimization</li>
+          <li>Dedicated Support (12hr response)</li>
+        </ul>
+        <button class="plan-btn" onclick="selectPlan('Advanced')">Select Plan</button>
+        <a href="#" class="plan-btn secondary" onclick="highlightPlan('Advanced Care')">Learn More</a>
+      </div>
+
+      <div class="plan-card">
+        <h3 class="plan-title">Premium Care</h3>
+        <p class="plan-price">₹10,000 <span>/ year</span></p>
+        <ul class="plan-benefits">
+          <li>Daily Automated Backups</li>
+          <li>24/7 Uptime Monitoring</li>
+          <li>Advanced Security Hardening</li>
+          <li>Performance Optimization</li>
+          <li>Emergency Support (6hr response)</li>
+          <li>Monthly Maintenance Report</li>
+        </ul>
+        <button class="plan-btn" onclick="selectPlan('Premium')">Select Plan</button>
+        <a href="#" class="plan-btn secondary" onclick="highlightPlan('Premium Care')">Learn More</a>
+      </div>
+    </div>
+
+    <div class="form-container">
+      <h3 class="section-title">Get Your Custom Proposal</h3>
+      
+      <div class="form-group">
+        <label for="clientName" class="form-label">Your Name <span style="color:red">*</span></label>
+        <input type="text" id="clientName" class="form-control" placeholder="Enter your name" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="clientCompany" class="form-label">Company Name</label>
+        <input type="text" id="clientCompany" class="form-control" placeholder="Enter company name (if applicable)" />
+      </div>
+      
+      <div class="form-group">
+        <label for="clientEmail" class="form-label">Email Address <span style="color:red">*</span></label>
+        <input type="email" id="clientEmail" class="form-control" placeholder="Enter your email" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="clientPhone" class="form-label">Phone Number <span style="color:red">*</span></label>
+        <input type="tel" id="clientPhone" class="form-control" placeholder="Enter your phone number" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="websiteInput" class="form-label">
+          Your Website URL 
+          <span class="tooltip">
+            <i class="fas fa-info-circle"></i>
+            <span class="tooltiptext">Enter your website address to get personalized recommendations</span>
+          </span>
+        </label>
+        <input type="url" id="websiteInput" class="form-control" placeholder="https://yourwebsite.com" />
+        <button class="btn btn-accent" style="margin-top: 1rem;" onclick="suggestPlan()">
+          <span id="suggest-btn-text">Get Plan Recommendation</span>
+        </button>
+      </div>
+      
+      <div id="suggestion-result" style="display: none;"></div>
+    </div>
+    
+    <button class="btn btn-block" onclick="generatePDF()" id="generate-pdf-btn">
+      Download Custom Maintenance Proposal
+    </button>
+
+    <!-- Hidden PDF Template -->
+    <div id="pdf-template">
+      <div class="pdf-header">
+        <img src="https://via.placeholder.com/150x50.png?text=PROGRAMMING_JAY" class="pdf-logo" alt="Company Logo">
+        <div class="pdf-company-info">
+          <p><strong>PROGRAMMING_JAY</strong></p>
+          <p>BHUJ | KUTCH</p>
+          <p>Phone: +91 6351240826 | Email: developer.jay20@gmail.com</p>
+        </div>
+      </div>
+
+      <h1 class="pdf-title">Website Maintenance Proposal</h1>
+
+      <div class="pdf-client-info">
+        <h3>Client Information</h3>
+        <p><strong>Name:</strong> <span id="pdf-client-name">[Client Name]</span></p>
+        <p><strong>Company:</strong> <span id="pdf-client-company">[Company Name]</span></p>
+        <p><strong>Email:</strong> <span id="pdf-client-email">[Email Address]</span></p>
+        <p><strong>Phone:</strong> <span id="pdf-client-phone">[Phone Number]</span></p>
+        <p><strong>Website:</strong> <span id="pdf-client-website">[Website URL]</span></p>
+      </div>
+
+      <div class="pdf-recommendation">
+        <h3>Our Recommendation</h3>
+        <p id="pdf-recommendation-text">Based on your website, we recommend the following maintenance plan:</p>
+      </div>
+
+      <h3>Available Maintenance Plans</h3>
+      <div class="pdf-plans-container" id="pdf-plans-container">
+        <!-- Plans will be inserted here by JavaScript -->
+      </div>
+
+      <div class="pdf-date">
+        <p>Proposal Date: <span id="pdf-date"></span></p>
+        <p>Valid Until: <span id="pdf-valid-date"></span></p>
+      </div>
+
+      <div class="pdf-footer">
+        <div class="pdf-signature">
+          <p>__________JAY DHOLI___________</p>
+          <p><strong>Authorized Signature</strong></p>
+          <p>PROGRAMMING_JAY</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize jsPDF
+    const { jsPDF } = window.jspdf;
+    let selectedPlan = null;
+
+    document.addEventListener("DOMContentLoaded", function() {
+      // Set dates in PDF template
+      const today = new Date();
+      const validUntil = new Date();
+      validUntil.setDate(today.getDate() + 30);
+      
+      document.getElementById("pdf-date").textContent = formatDate(today);
+      document.getElementById("pdf-valid-date").textContent = formatDate(validUntil);
+    });
+
+    function formatDate(date) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return date.toLocaleDateString('en-IN', options);
+    }
+
+    function selectPlan(plan) {
+      selectedPlan = plan;
+      document.getElementById('generate-pdf-btn').scrollIntoView({ behavior: 'smooth' });
+      
+      // Update UI to show selected plan
+      const planCards = document.querySelectorAll('.plan-card');
+      planCards.forEach(card => {
+        card.style.border = '1px solid rgba(0, 0, 0, 0.05)';
+      });
+      
+      const selectedCard = document.querySelector(`.plan-card:nth-child(${['Basic', 'Standard', 'Advanced', 'Premium'].indexOf(plan) + 1})`);
+      if (selectedCard) {
+        selectedCard.style.border = '2px solid var(--accent-color)';
+      }
+      
+      // Update recommendation text
+      const recommendationText = `We recommend the <strong>${plan} Care</strong> plan for your website maintenance needs.`;
+      document.getElementById('suggestion-result').innerHTML = `
+        <div class="suggestion-result">
+          <p>${recommendationText}</p>
+          <p>Click "Download Custom Maintenance Proposal" below to get your personalized plan details.</p>
+        </div>
+      `;
+      document.getElementById('suggestion-result').style.display = 'block';
+    }
+
+    function suggestPlan() {
+      const url = document.getElementById("websiteInput").value.trim();
+      const result = document.getElementById("suggestion-result");
+      const btnText = document.getElementById("suggest-btn-text");
+      
+      // Show loading state
+      btnText.innerHTML = '<span class="loading"></span> Analyzing your website...';
+      
+      // Simulate analysis delay
+      setTimeout(() => {
+        if (!url) {
+          result.innerHTML = `
+            <div class="suggestion-result error">
+              <p>Please enter your website URL to get a personalized recommendation.</p>
+            </div>
+          `;
+          result.style.display = 'block';
+          btnText.textContent = 'Get Plan Recommendation';
+          return;
+        }
+        
+        let recommendation = "";
+        let planName = "";
+        let reasons = [];
+        
+        // Simple URL analysis (in a real app, this would be more sophisticated)
+        const urlLower = url.toLowerCase();
+        
+        if (urlLower.includes('portfolio') || urlLower.includes('blog') || urlLower.includes('personal')) {
+          planName = "Basic";
+          reasons = [
+            "Your website appears to be a personal portfolio or blog",
+            "Basic maintenance is sufficient for most personal websites",
+            "This plan provides essential protection at an affordable price"
+          ];
+        }
+        else if (urlLower.includes('service') || urlLower.includes('agency') || urlLower.includes('business')) {
+          planName = "Standard";
+          reasons = [
+            "Your business website needs regular maintenance",
+            "This plan includes important security updates",
+            "Priority support ensures quick response to any issues"
+          ];
+        }
+        else if (urlLower.includes('store') || urlLower.includes('ecommerce') || urlLower.includes('shop')) {
+          planName = "Premium";
+          reasons = [
+            "E-commerce websites require maximum protection",
+            "24/7 monitoring ensures your store is always available",
+            "Daily backups protect your valuable customer data"
+          ];
+        }
+        else {
+          planName = "Advanced";
+          reasons = [
+            "Your website would benefit from enhanced maintenance",
+            "This plan includes performance optimization",
+            "Regular malware scanning keeps your site secure"
+          ];
+        }
+        
+        selectedPlan = planName;
+        
+        // Build recommendation HTML
+        let reasonsHTML = reasons.map(r => `<li>${r}</li>`).join('');
+        
+        recommendation = `
+          <div class="suggestion-result">
+            <p>Based on our analysis of <strong>${url}</strong>, we recommend:</p>
+            <h4 style="margin: 1rem 0; color: var(--primary-color);">${planName} Care Plan</h4>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+              ${reasonsHTML}
+            </ul>
+            <p>This plan has been automatically selected for you. Click below to view details or choose a different plan above.</p>
+            <button class="btn" style="margin-top: 1rem;" onclick="highlightPlan('${planName} Care')">
+              View ${planName} Plan Details
+            </button>
+          </div>
+        `;
+        
+        result.innerHTML = recommendation;
+        result.style.display = 'block';
+        btnText.textContent = 'Get Plan Recommendation';
+        
+        // Scroll to result
+        result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        
+        // Highlight recommended plan
+        highlightPlan(`${planName} Care`);
+      }, 1500);
+    }
+
+    function highlightPlan(planName) {
+      const plans = document.querySelectorAll('.plan-card');
+      plans.forEach(plan => {
+        plan.style.border = '1px solid rgba(0, 0, 0, 0.05)';
+        if (plan.querySelector('.plan-title').textContent.includes(planName)) {
+          plan.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          plan.style.border = '2px solid var(--accent-color)';
+          plan.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.15)';
+          setTimeout(() => {
+            plan.style.boxShadow = 'var(--box-shadow)';
+          }, 2000);
+        }
+      });
+    }
+
+    function generatePDF() {
+      // Validate client details
+      const clientName = document.getElementById("clientName").value.trim();
+      const clientEmail = document.getElementById("clientEmail").value.trim();
+      const clientPhone = document.getElementById("clientPhone").value.trim();
+
+      if (!clientName || !clientEmail || !clientPhone) {
+        alert("Please provide your name, email, and phone number to generate the proposal");
+        return;
+      }
+
+      // Get all client details
+      const clientCompany = document.getElementById("clientCompany").value.trim() || "Not provided";
+      const websiteUrl = document.getElementById("websiteInput").value.trim() || "Not provided";
+
+      // Update PDF template with client details
+      document.getElementById("pdf-client-name").textContent = clientName;
+      document.getElementById("pdf-client-company").textContent = clientCompany;
+      document.getElementById("pdf-client-email").textContent = clientEmail;
+      document.getElementById("pdf-client-phone").textContent = clientPhone;
+      document.getElementById("pdf-client-website").textContent = websiteUrl;
+
+      // Update recommendation in PDF template
+      let recommendationText = "Our team will assess your website and recommend the most suitable plan.";
+      if (selectedPlan) {
+        const planTitles = {
+          'Basic': 'Basic Care',
+          'Standard': 'Standard Care',
+          'Advanced': 'Advanced Care',
+          'Premium': 'Premium Care'
+        };
+        recommendationText = `We recommend the ${planTitles[selectedPlan]} plan for your website maintenance needs.`;
+      }
+      document.getElementById("pdf-recommendation-text").textContent = recommendationText;
+
+      // Create plans in PDF template
+      const plansContainer = document.getElementById("pdf-plans-container");
+      plansContainer.innerHTML = `
+        <div class="pdf-plan-card" ${selectedPlan === 'Basic' ? 'style="border: 2px solid var(--accent-color);"' : ''}>
+          <h4 class="pdf-plan-title">Basic Care</h4>
+          <p class="pdf-plan-price">₹2,000 / Year</p>
+          <ul class="pdf-plan-benefits">
+            <li>Monthly Website Backup</li>
+            <li>Minor Content Updates</li>
+            <li>Basic Security Monitoring</li>
+            <li>Email Support (48hr response)</li>
+          </ul>
+        </div>
+        <div class="pdf-plan-card" ${selectedPlan === 'Standard' ? 'style="border: 2px solid var(--accent-color);"' : ''}>
+          <h4 class="pdf-plan-title">Standard Care</h4>
+          <p class="pdf-plan-price">₹4,000 / Year</p>
+          <ul class="pdf-plan-benefits">
+            <li>Bi-weekly Backups</li>
+            <li>Performance Optimization</li>
+            <li>Plugin/Theme Updates</li>
+            <li>Security Updates</li>
+            <li>Priority Support (24hr response)</li>
+          </ul>
+        </div>
+        <div class="pdf-plan-card" ${selectedPlan === 'Advanced' ? 'style="border: 2px solid var(--accent-color);"' : ''}>
+          <h4 class="pdf-plan-title">Advanced Care</h4>
+          <p class="pdf-plan-price">₹7,000 / Year</p>
+          <ul class="pdf-plan-benefits">
+            <li>Weekly Backups</li>
+            <li>Malware Scanning</li>
+            <li>Speed Optimization</li>
+            <li>Analytics Setup</li>
+            <li>SEO Basic Optimization</li>
+            <li>Dedicated Support (12hr response)</li>
+          </ul>
+        </div>
+        <div class="pdf-plan-card" ${selectedPlan === 'Premium' ? 'style="border: 2px solid var(--accent-color);"' : ''}>
+          <h4 class="pdf-plan-title">Premium Care</h4>
+          <p class="pdf-plan-price">₹10,000 / Year</p>
+          <ul class="pdf-plan-benefits">
+            <li>Daily Automated Backups</li>
+            <li>24/7 Uptime Monitoring</li>
+            <li>Advanced Security Hardening</li>
+            <li>Performance Optimization</li>
+            <li>Emergency Support (6hr response)</li>
+            <li>Monthly Maintenance Report</li>
+          </ul>
+        </div>
+      `;
+
+      // Generate the PDF
+      const element = document.getElementById("pdf-template");
+      const opt = {
+        margin: 0,
+        filename: `Website_Maintenance_Proposal_${clientName.replace(/\s+/g, '_')}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: {
+          scale: 2,
+          logging: false,
+          useCORS: true
+        },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      };
+
+      // Show loading state
+      const btn = document.getElementById('generate-pdf-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="loading"></span> Generating PDF...';
+
+      html2canvas(element, opt).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const imgWidth = 210;
+        const imgHeight = canvas.height * imgWidth / canvas.width;
+
+        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+        pdf.save(opt.filename);
+
+        // Reset button
+        btn.disabled = false;
+        btn.textContent = 'Download Custom Maintenance Proposal';
+      }).catch(err => {
+        console.error('Error generating PDF:', err);
+        alert('Error generating PDF. Please try again.');
+        btn.disabled = false;
+        btn.textContent = 'Download Custom Maintenance Proposal';
+      });
+    }
+  </script>
+</body>
+
+</html>
