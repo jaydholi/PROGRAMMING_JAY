@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $message = htmlspecialchars($_POST['message']);
 
   // Example: store in a file or connect to database
-  $to = "youremail@example.com";
+  $to = "developer.jay20@gmail.com";
   $subject = "New Contact Message";
   $body = "From: $name\nEmail: $email\nMessage:\n$message";
 
