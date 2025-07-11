@@ -577,16 +577,15 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="/index.html"><i class="fas fa-code"></i>Programming_Jay</a>
+      <a class="navbar-brand" href="#"><i class="fas fa-code"></i>Programming_Jay</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="/index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/webdev-service-website/index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="/webdev-service-website/service.html">Services</a></li>
           <li class="nav-item"><a class="nav-link" href="/webdev-service-website/internship.html">Internship</a></li>
-          <!-- <li class="nav-item"><a class="nav-link" href="#training">Training</a></li> -->
           <li class="nav-item"><a class="nav-link" href="/webdev-service-website/about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="/webdev-service-website/contact.html">Contact</a></li>
         </ul>
@@ -612,19 +611,19 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3 col-6 stat-item">
-          <h3 class="counter" data-target="20">20+</h3>
+          <h3 class="counter" data-target="-200">0</h3>
           <p>Web Projects Delivered</p>
         </div>
         <div class="col-md-3 col-6 stat-item">
-          <h3 class="counter" data-target="120">20+</h3>
+          <h3 class="counter" data-target="120">0</h3>
           <p>Happy Clients</p>
         </div>
         <div class="col-md-3 col-6 stat-item">
-          <h3 class="counter" data-target="50">10+</h3>
+          <h3 class="counter" data-target="50">0</h3>
           <p>Interns Trained</p>
         </div>
         <div class="col-md-3 col-6 stat-item">
-          <h3><span class="counter" data-target="99">99</span>%</h3>
+          <h3><span class="counter" data-target="99">0</span>%</h3>
           <p>Satisfaction Rate</p>
         </div>
       </div>
@@ -702,7 +701,7 @@
           <a href="#contact" class="btn btn-primary mt-3">Apply Now</a>
         </div>
         <div class="col-lg-6 mt-5 mt-lg-0">
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Internship Program" class="img-fluid about-img">
+          <img src="/webdev-service-website/image.png" alt="Internship Program" class="img-fluid about-img">
         </div>
       </div>
     </div>
@@ -746,7 +745,9 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 order-lg-1 order-2">
-          <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="About Us" class="img-fluid about-img">
+          <img
+            src="/webdev-service-website/assets/img/logo.png"
+            alt="About Us" class="img-fluid about-img">
         </div>
         <div class="col-lg-6 order-lg-2 order-1 mb-5 mb-lg-0">
           <h2 class="section-title animate__animated animate__fadeIn">About Programming_Jay | Web Solutions</h2>
@@ -773,7 +774,33 @@
   <section class="section" id="contact">
     <div class="container">
       <h2 class="text-center section-title animate__animated animate__fadeIn">Get In Touch</h2>
-      <div class="row">
+      <div class="row mt-5">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <form id="contactForm">
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="mb-3">
+              <input type="email" class="form-control" placeholder="Email Address" required>
+            </div>
+            <div class="mb-3">
+              <input type="tel" class="form-control" placeholder="Phone Number">
+            </div>
+            <div class="mb-3">
+              <select class="form-select">
+                <option selected disabled>I'm interested in...</option>
+                <option>Web Development Services</option>
+                <option>Internship Program</option>
+                <option>Training Courses</option>
+                <option>Other Inquiry</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control" rows="4" placeholder="Your Message"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-3">Send Message</button>
+          </form>
+        </div>
         <div class="col-lg-6">
           <div class="card-service h-100">
             <h4 class="mb-4">Contact Information</h4>
@@ -781,7 +808,7 @@
               <i class="fas fa-map-marker-alt text-primary me-3 mt-1"></i>
               <div>
                 <h5 class="mb-1">Address</h5>
-                <p class="mb-0">Bhuj, Kutch | Gujarat - India</p>
+                <p class="mb-0">Bhuj,Kutch | Gujarat - India </p>
               </div>
             </div>
             <div class="d-flex align-items-start mb-4">
@@ -798,22 +825,10 @@
                 <p class="mb-0">+91 63512 40826</p>
               </div>
             </div>
-            <div class="social-icons mt-4">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-github"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6 mt-5 mt-lg-0">
-          <div class="card-service">
-            <h4 class="mb-4">Contact Us</h4>
-            
           </div>
         </div>
       </div>
+    </div>
     </div>
   </section>
 
@@ -835,23 +850,15 @@
           <h3 class="mb-4">Programming_Jay</h3>
           <p>Providing cutting-edge web solutions and professional training to help businesses and individuals succeed
             in the digital world.</p>
-          <div class="social-icons mt-4">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
-          </div>
         </div>
         <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
           <h4 class="mb-4">Quick Links</h4>
           <ul class="footer-links">
-            <li><a href="/index.html">Home</a></li>
+            <li><a href="/webdev-service-website/index.html">Home</a></li>
             <li><a href="/webdev-service-website/service.html">Services</a></li>
             <li><a href="/webdev-service-website/internship.html">Internship</a></li>
-            <!-- <li><a href="#training">Training</a></li> -->
             <li><a href="/webdev-service-website/contact.html">Contact</a></li>
-            <li><a href="/webdev-service-website/about.html">About</a></li>
+            <li><a href="/webdev-service-website/about.html  ">About</a></li>
           </ul>
         </div>
         <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
@@ -862,7 +869,6 @@
             <li><a href="#">SEO</a></li>
             <li><a href="#">Maintenance</a></li>
             <li><a href="#">Consulting</a></li>
-            <li><a href="#">Training</a></li>
           </ul>
         </div>
         <div class="col-lg-4 col-md-4">
@@ -1040,6 +1046,11 @@
       typeWriter();
     };
   </script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+
 </body>
 
 </html>
