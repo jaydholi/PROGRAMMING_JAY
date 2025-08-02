@@ -313,6 +313,36 @@
       color: transparent;
     }
 
+    .client-box {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .client-box img {
+      max-height: 60px;
+      max-width: 100%;
+      object-fit: contain;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease;
+    }
+
+    .client-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    }
+
+    .client-box:hover img {
+      filter: grayscale(0%);
+    }
+
+
+
     footer {
       background: var(--darker-bg);
       padding: 60px 0 20px;
@@ -745,9 +775,7 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 order-lg-1 order-2">
-          <img
-            src="/webdev-service-website/assets/img/logo.png"
-            alt="About Us" class="img-fluid about-img">
+          <img src="/webdev-service-website/assets/img/logo.png" alt="About Us" class="img-fluid about-img">
         </div>
         <div class="col-lg-6 order-lg-2 order-1 mb-5 mb-lg-0">
           <h2 class="section-title animate__animated animate__fadeIn">About Programming_Jay | Web Solutions</h2>
@@ -769,6 +797,40 @@
       </div>
     </div>
   </section>
+  <!-- Clients Section -->
+  <section class="py-5 bg-dark text-white" id="clients">
+    <div class="container text-center">
+      <h2 class="mb-4 fw-bold" data-aos="fade-down">Our Top Clients</h2>
+      <div class="row justify-content-center align-items-center g-4">
+        <div class="col-6 col-md-2" data-aos="zoom-in">
+          <img src="/webdev-service-website/assets/img/logo/logo dharmitourism.png" class="img-fluid client-logo"
+            alt="Client 1">
+        </div>
+        <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="100">
+          <img src="/webdev-service-website/assets/img/logo/logo kutch tourism.png" class="img-fluid client-logo"
+            alt="Client 2">
+        </div>
+        <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="200">
+          <img src="/webdev-service-website/assets/img/logo/logo astroakshat.png" class="img-fluid client-logo"
+            alt="Client 3">
+        </div>
+        <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="300">
+          <img src="/webdev-service-website/assets/img/logo/logo khushi taxi .png" class="img-fluid client-logo"
+            alt="Client 4">
+        </div>
+        <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="300">
+          <img src="/webdev-service-website/assets/img/logo/logo raj world.png" class="img-fluid client-logo"
+            alt="Client 4">
+        </div>
+        <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="400">
+          <img src="/webdev-service-website/assets/img/logo/logo kutch car rental.png" class="img-fluid client-logo"
+            alt="Client 5">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
 
   <!-- Contact Section -->
   <section class="section" id="contact">

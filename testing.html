@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gujarat Tour Packages | Kutch Tourism</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+
+        /* Quick Inquiry Button */
+        .quickInquiryBtn {
+            position: fixed;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        /* Full Navbar Styles */
+        #masthead {
+            background: #fff;
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .logoImg {
+            display: flex;
+            justify-content: center;
+            /* Centers logos horizontally */
+            align-items: center;
+            /* Aligns logos vertically */
+            gap: 20px;
+            /* Adds space between logos */
+        }
+
+        .logoImg a img {
+            max-height: 100px;
+            /* Ensures all logos have the same height */
+            object-fit: contain;
+            /* Preserves aspect ratio */
+        }
+
+        .h5 {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding: 0;
+            position: relative;
+            bottom: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 15px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .callnEmail {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .callLink,
+        .emailLink {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon img {
+            height: 24px;
+        }
+
+        .txt a {
+            display: block;
+            font-size: 14px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .txt a:hover {
+            color: #ff6600;
+        }
+
+        .topMenu {
+            background: #ff6600;
+        }
+
+        .topMenu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .topMenu li {
+            position: relative;
+        }
+
+        .topMenu a {
+            display: block;
+            padding: 12px 20px;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .topMenu li:hover>a {
+            background: #e05a00;
+        }
+
+        .topMenu li ul {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #fff;
+            display: none;
+            min-width: 200px;
+            z-index: 999;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .topMenu li:hover ul {
+            display: block;
+        }
+
+        .topMenu li ul a {
+            color: #333;
+            padding: 10px 15px;
+        }
+
+        .topMenu li ul a:hover {
+            background: #f0f0f0;
+        }
+
+        /* Hero Section */
+        header.hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url('/images/gujarat-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        header.hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header.hero p {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        /* Package Section */
+        .grid-container {
+            padding: 60px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeIn 0.6s ease-out forwards 0.5s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .grid-item {
+            width: 350px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px 12px 0 0;
+            cursor: pointer;
+        }
+
+        .package-content {
+            padding: 20px;
+        }
+
+        .grid-item h3 {
+            margin: 0 0 10px;
+            font-size: 1.3rem;
+            color: #ff6600;
+            text-align: center;
+        }
+
+        .package-duration {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .package-features {
+            margin-bottom: 20px;
+        }
+
+        .package-features ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .package-features li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .package-features li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #ff6600;
+        }
+
+        .package-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff6600;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .package-btn {
+            display: block;
+            text-align: center;
+            background: #ff6600;
+            color: white;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .package-btn:hover {
+            background: #e05a00;
+            color: white;
+        }
+
+        /* Highlights Section */
+        .highlights {
+            padding: 60px 20px;
+            background: white;
+            text-align: center;
+        }
+
+        .highlights h2 {
+            font-size: 2rem;
+            color: #ff6600;
+            margin-bottom: 40px;
+        }
+
+        .highlight-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .highlight-item {
+            width: 250px;
+        }
+
+        .highlight-icon {
+            font-size: 2.5rem;
+            color: #ff6600;
+            margin-bottom: 15px;
+        }
+
+        .highlight-item h3 {
+            margin: 0 0 10px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 60px 20px;
+            background: #f9f9f9;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 2rem;
+            color: #ff6600;
+            margin-bottom: 40px;
+        }
+
+        .testimonial-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-item {
+            width: 350px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            text-align: left;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+        }
+
+        .testimonial-rating {
+            color: #ffc107;
+            margin-top: 10px;
+        }
+
+        @media screen and (max-width: 768px) {
+            header.hero h1 {
+                font-size: 2rem;
+            }
+
+            .grid-item {
+                width: 90%;
+            }
+
+            .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .topMenu ul {
+                flex-direction: column;
+            }
+
+            .logoImg {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Quick Inquiry Button -->
+    <a href="contact-us.html" class="quickInquiryBtn">
+        <img src="images/quick-inquiry.png" alt="Quick Inquiry" />
+    </a>
+
+    <!-- Full Navbar -->
+    <header id="masthead" class="site-header">
+        <div class="container">
+            <div class="logoImg">
+                <a href="index.html"><img src="/images/LOGO.png" alt="Kutch Tourism Logo" /></a>
+                <a href="#"><img src="/images/Visiting Card_Final.png" alt="New Logo" /></a>
+                <a href="#"><img src="/images/pngwing.com (8).png" alt="Gujarat Tourism Logo" /></a>
+                <h5>Authorised Tour Operator since 2007</h5>
+            </div>
+            <div class="callnEmail">
+                <div class="callLink">
+                    <div class="icon"><img src="images/icon-phone.png" alt="Phone" /></div>
+                    <div class="txt">
+                        <strong>Call us</strong>
+                        <a href="tel:+91 9426136955">+91 94261 36955</a>
+                        <a href="tel:+918160289997">+91 81602 89997</a>
+                    </div>
+                </div>
+                <div class="emailLink">
+                    <div class="icon"><img src="images/icon-email.png" alt="Email" /></div>
+                    <div class="txt">
+                        <strong>Email</strong>
+                        <a href="mailto:travelkutch@gmail.com">travelkutch@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="topMenu">
+            <div class="container">
+                <nav class="main-navigation">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="cars.html">Car Rental Service</a></li>
+
+                        <li><a href="Kutch-Tour-Packages.html">Kutch Tour Packages</a>
+                            <ul>
+                                <li><a href="Kutch-Tour-Packages.html"><b>Normal Date Rates</b></a></li>
+                                <li><a href="peak-dates.html">Peak Date Rates</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="maintanance.html">Gujarat Tour Packages</a></li>
+
+                        <li><a href="hotels-bookings.html">Hotels Bookings</a></li>
+
+                        <li><a href="place-in-kutch.html">Places in Kutch</a></li>
+                        <li><a href="rann-utsav.html" target="_blank" rel="nofollow">Rann Utsav</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Discover Gujarat's Wonders</h1>
+        <p>Experience the rich cultural heritage and breathtaking landscapes of Gujarat</p>
+    </header>
+
+    <!-- Package Cards -->
+    <div class="grid-container" id="packages">
+        <div class="grid-item">
+            <img src="/images/statue-of-unity-tour.jpg" alt="Statue of Unity Tour" />
+            <div class="package-content">
+                <h3>Statue of Unity Special</h3>
+                <div class="package-duration">
+                    <i class="fas fa-clock"></i> 3 Days / 2 Nights
+                </div>
+                <div class="package-features">
+                    <ul>
+                        <li>Visit world's tallest statue</li>
+                        <li>Boat ride on Narmada river</li>
+                        <li>Valley of Flowers entry</li>
+                        <li>3-star accommodation</li>
+                        <li>All meals included</li>
+                    </ul>
+                </div>
+                <div class="package-price">
+                    Starting from ₹8,499 per person
+                </div>
+                <a href="https://api.whatsapp.com/send?phone=+919426136955&text=I'm interested in Statue of Unity Package"
+                    class="package-btn">Book Now</a>
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <img src="/images/gir-wildlife-tour.jpg" alt="Gir Wildlife Tour" />
+            <div class="package-content">
+                <h3>Gir Wildlife Adventure</h3>
+                <div class="package-duration">
+                    <i class="fas fa-clock"></i> 4 Days / 3 Nights
+                </div>
+                <div class="package-features">
+                    <ul>
+                        <li>3 jungle safaris included</li>
+                        <li>Visit to Devalia Safari Park</li>
+                        <li>Somnath Temple darshan</li>
+                        <li>Jungle resort stay</li>
+                        <li>Expert wildlife guide</li>
+                    </ul>
+                </div>
+                <div class="package-price">
+                    Starting from ₹12,999 per person
+                </div>
+                <a href="https://api.whatsapp.com/send?phone=+919426136955&text=I'm interested in Gir Wildlife Package"
+                    class="package-btn">Book Now</a>
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <img src="/images/dwarka-somnath-tour.jpg" alt="Dwarka Somnath Tour" />
+            <div class="package-content">
+                <h3>Dwarka Somnath Pilgrimage</h3>
+                <div class="package-duration">
+                    <i class="fas fa-clock"></i> 5 Days / 4 Nights
+                </div>
+                <div class="package-features">
+                    <ul>
+                        <li>Dwarkadhish Temple darshan</li>
+                        <li>Somnath Jyotirling visit</li>
+                        <li>Nageshwar Jyotirling darshan</li>
+                        <li>Beachfront hotel stay</li>
+                        <li>All temple arrangements</li>
+                    </ul>
+                </div>
+                <div class="package-price">
+                    Starting from ₹15,499 per person
+                </div>
+                <a href="https://api.whatsapp.com/send?phone=+919426136955&text=I'm interested in Dwarka Somnath Package"
+                    class="package-btn">Book Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Highlights Section -->
+    <section class="highlights">
+        <h2>Why Choose Our Gujarat Tours</h2>
+        <div class="highlight-grid">
+            <div class="highlight-item">
+                <div class="highlight-icon">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <h3>Expert Guides</h3>
+                <p>Local experts with in-depth knowledge of Gujarat's heritage</p>
+            </div>
+            <div class="highlight-item">
+                <div class="highlight-icon">
+                    <i class="fas fa-hotel"></i>
+                </div>
+                <h3>Quality Stays</h3>
+                <p>Carefully selected 3-star & 4-star accommodations</p>
+            </div>
+            <div class="highlight-item">
+                <div class="highlight-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3>Authentic Cuisine</h3>
+                <p>Experience Gujarat's famous vegetarian cuisine</p>
+            </div>
+            <div class="highlight-item">
+                <div class="highlight-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>24/7 Support</h3>
+                <p>Dedicated support throughout your journey</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>What Our Travelers Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-item">
+                <div class="testimonial-text">
+                    "The Statue of Unity tour was exceptional. Our guide was knowledgeable and the hotel with Narmada
+                    view was perfect. Highly recommended!"
+                </div>
+                <div class="testimonial-author">Rajesh Patel, Mumbai</div>
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <div class="testimonial-item">
+                <div class="testimonial-text">
+                    "We saw 7 lions during our Gir safari! The wildlife package was well-organized with comfortable
+                    resort stay and expert guides."
+                </div>
+                <div class="testimonial-author">Priya Sharma, Delhi</div>
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <div class="testimonial-item">
+                <div class="testimonial-text">
+                    "The spiritual journey to Dwarka and Somnath was made seamless by Kutch Tourism. The temple
+                    arrangements were perfect."
+                </div>
+                <div class="testimonial-author">Mr. & Mrs. Iyer, Chennai</div>
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const gridContainer = document.querySelector('.grid-container');
+            const { top } = gridContainer.getBoundingClientRect();
+            const trigger = window.innerHeight / 1.2;
+
+            if (top < trigger) {
+                gridContainer.style.opacity = 1;
+                gridContainer.style.transform = 'translateY(0)';
+            }
+        });
+    </script>
+</body>
+
+</html>
