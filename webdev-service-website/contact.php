@@ -1,33 +1,33 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Collecting form data
-    $name = htmlspecialchars($_POST['name']);
-    $email = htmlspecialchars($_POST['email']);
-    $phone = htmlspecialchars($_POST['phone']);
-    $interest = htmlspecialchars($_POST['interest']);
-    $message = htmlspecialchars($_POST['message']);
+    $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+    $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+    $phone = filter_var($_POST['phone'], FILTER_SANITIZE_STRING);
+    $interest = filter_var($_POST['interest'], FILTER_SANITIZE_STRING);
+    $message = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
 
-    // Your email address
+    if (!$email) {
+        echo "Invalid email address";
+        exit;
+    }
+
     $to = "developer.jay20@gmail.com";
     $subject = "New Contact Form Submission";
 
-    // Email content
-    $email_content = "You have received a new message from your website contact form:\n\n";
-    $email_content .= "Name: $name\n";
+    $email_content = "Name: $name\n";
     $email_content .= "Email: $email\n";
     $email_content .= "Phone: $phone\n";
     $email_content .= "Interest: $interest\n";
     $email_content .= "Message:\n$message\n";
 
-    // Headers
-    $headers = "From: $email\r\n";
+    // Use a from email that belongs to your domain
+    $headers = "From: no-reply@yourdomain.com\r\n";
     $headers .= "Reply-To: $email\r\n";
 
-    // Send the email
     if (mail($to, $subject, $email_content, $headers)) {
         echo "<script>alert('Message sent successfully.'); window.location.href='index.html';</script>";
     } else {
-        echo "<script>alert('Failed to send message. Please try again later.'); window.history.back();</script>";
+        echo "<script>alert('Failed to send message.'); window.history.back();</script>";
     }
 }
 ?>

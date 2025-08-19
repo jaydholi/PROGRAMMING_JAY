@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Festival Greetings | Programming_Jay</title>
+  <meta name="description" content="Celebrating 77th Independence Day and Janmashtami with Programming_Jay">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #4361ee;
+      --secondary-color: #3a0ca3;
+      --accent-color: #4cc9f0;
+      --dark-bg: #0f172a;
+      --darker-bg: #020617;
+      --card-bg: #1e293b;
+      --text-light: #f8fafc;
+      --text-muted: #94a3b8;
+      --success-color: #10b981;
+      --warning-color: #f59e0b;
+      --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      --independence-orange: #FF9933;
+      --independence-white: #FFFFFF;
+      --independence-green: #138808;
+      --independence-blue: #000080;
+      --janmashtami-yellow: #FFD700;
+      --janmashtami-blue: #00008B;
+      --janmashtami-dark-blue: #000050;
+    }
+
+    /* Inherit all your existing styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    /* Keep your existing navbar styles */
+    .navbar {
+      background-color: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    /* Enhanced Festival Hero Section */
+    .festival-hero {
+      background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.85)),
+        url('https://images.unsplash.com/photo-1600857544200-b6f11a2e3cfa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      padding: 180px 0 120px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .festival-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 50%, rgba(67, 97, 238, 0.15) 0%, transparent 40%);
+    }
+
+    .festival-hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+      background: linear-gradient(to right, #fff, var(--accent-color));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .festival-hero p.lead {
+      font-size: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .festival-btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      font-weight: 600;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin: 0 10px;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      border: 2px solid transparent;
+    }
+
+    .festival-btn-primary {
+      background: var(--gradient-primary);
+      color: white;
+      box-shadow: 0 4px 15px rgba(67, 97, 238, 0.4);
+    }
+
+    .festival-btn-outline {
+      background: transparent;
+      color: white;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .festival-btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: white;
+    }
+
+    /* Festival Countdown */
+    .countdown-container {
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 3rem auto;
+      max-width: 800px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .countdown-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-light);
+      opacity: 0.9;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .countdown-item {
+      text-align: center;
+      min-width: 100px;
+    }
+
+    .countdown-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: white;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    .countdown-label {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+    }
+
+    /* Festival Cards */
+    .festival-card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      height: 100%;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .festival-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .festival-card-img {
+      height: 250px;
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .festival-card:hover .festival-card-img {
+      transform: scale(1.05);
+    }
+
+    .festival-card-body {
+      padding: 30px;
+      position: relative;
+    }
+
+    .festival-card-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .festival-card-title::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 3px;
+      background: var(--gradient-primary);
+      bottom: -8px;
+      left: 0;
+      border-radius: 3px;
+    }
+
+    .festival-card-date {
+      display: inline-block;
+      background: var(--gradient-primary);
+      padding: 0.3rem 1.2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: white;
+    }
+
+    /* Indian Flag Animation */
+    .flag-container {
+      width: 100%;
+      max-width: 500px;
+      height: 300px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .indian-flag {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        0deg,
+        var(--independence-green) 33%,
+        var(--independence-white) 33% 66%,
+        var(--independence-orange) 66%
+      );
+      position: relative;
+      animation: flagWave 10s linear infinite;
+      background-size: 200% 100%;
+    }
+
+    .chakra {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      border: 2px solid var(--independence-blue);
+      border-radius: 50%;
+    }
+
+    .chakra::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 15px;
+      height: 15px;
+      background-color: var(--independence-blue);
+      border-radius: 50%;
+    }
+
+    .spoke {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 2px;
+      height: 40px;
+      background-color: var(--independence-blue);
+      transform-origin: top center;
+    }
+
+    /* Janmashtami Elements */
+    .janmashtami-theme {
+      background: linear-gradient(rgba(0, 0, 80, 0.85), rgba(0, 0, 50, 0.85)),
+        url('https://images.unsplash.com/photo-1594819047050-99defca825f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+    }
+
+    .janmashtami-card {
+      border: 2px solid var(--janmashtami-blue);
+      background: linear-gradient(135deg, var(--janmashtami-dark-blue), var(--darker-bg));
+    }
+
+    .janmashtami-card:hover {
+      box-shadow: 0 15px 40px rgba(0, 0, 138, 0.4);
+    }
+
+    .flute {
+      position: absolute;
+      right: 30px;
+      bottom: 30px;
+      font-size: 3.5rem;
+      color: var(--janmashtami-yellow);
+      transform: rotate(-30deg);
+      opacity: 0.8;
+      transition: all 0.3s ease;
+    }
+
+    .janmashtami-card:hover .flute {
+      transform: rotate(-20deg) scale(1.1);
+      opacity: 1;
+    }
+
+    /* Quote Styles */
+    .festival-quote {
+      position: relative;
+      padding: 2rem;
+      border-radius: 10px;
+      margin: 2rem 0;
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .festival-quote::before {
+      content: '\201C';
+      font-family: Georgia, serif;
+      font-size: 4rem;
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      color: rgba(255, 255, 255, 0.1);
+    }
+
+    .festival-quote-text {
+      font-size: 1.2rem;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+
+    .festival-quote-author {
+      text-align: right;
+      font-weight: 600;
+      margin-top: 1rem;
+      color: var(--accent-color);
+    }
+
+    /* Animations */
+    @keyframes flagWave {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 100% 0;
+      }
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    .floating {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .pulse {
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+      .festival-hero h1 {
+        font-size: 3rem;
+      }
+      
+      .festival-hero p.lead {
+        font-size: 1.3rem;
+      }
+      
+      .flag-container {
+        height: 250px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .festival-hero {
+        padding: 150px 0 80px 0;
+        min-height: auto;
+      }
+      
+      .festival-hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .festival-hero p.lead {
+        font-size: 1.1rem;
+      }
+      
+      .festival-card-title {
+        font-size: 1.5rem;
+      }
+      
+      .countdown-number {
+        font-size: 2rem;
+      }
+      
+      .countdown-item {
+        min-width: 80px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .festival-btn {
+        display: block;
+        margin: 10px auto;
+        max-width: 200px;
+      }
+      
+      .countdown {
+        gap: 1rem;
+      }
+      
+      .countdown-item {
+        min-width: 70px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#"><i class="fas fa-code"></i>Programming_Jay</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/webdev-service-website/index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/webdev-service-website/service.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="/webdev-service-website/internship.html">Internship</a></li>
+          <li class="nav-item"><a class="nav-link" href="/webdev-service-website/about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="/webdev-service-website/contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/webdev-service-website/festivals.html">Festivals</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Festival Hero Section -->
+  <section class="festival-hero">
+    <div class="container">
+      <div class="animate__animated animate__fadeInDown">
+        <h1>Celebrating Our Heritage</h1>
+        <p class="lead">Wishing you a joyous Independence Day and a blessed Janmashtami from Team Programming_Jay</p>
+        
+        <div class="mt-4">
+          <a href="#independence-day" class="festival-btn festival-btn-primary animate__animated animate__pulse animate__infinite animate__slower">15th August</a>
+          <a href="#janmashtami" class="festival-btn festival-btn-outline">16th August</a>
+        </div>
+      </div>
+      
+      <!-- Countdown to Independence Day -->
+      <div class="countdown-container animate__animated animate__fadeInUp animate__delay-1s">
+        <div class="countdown-title">Countdown to India's 77th Independence Day</div>
+        <div class="countdown">
+          <div class="countdown-item">
+            <div class="countdown-number" id="countdown-days">00</div>
+            <div class="countdown-label">Days</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="countdown-hours">00</div>
+            <div class="countdown-label">Hours</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="countdown-minutes">00</div>
+            <div class="countdown-label">Minutes</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="countdown-seconds">00</div>
+            <div class="countdown-label">Seconds</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Independence Day Section -->
+  <section class="section" id="independence-day">
+    <div class="container">
+      <h2 class="text-center section-title animate__animated animate__fadeIn">77th Independence Day</h2>
+      <div class="row align-items-center mt-5">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="flag-container pulse">
+            <div class="indian-flag">
+              <div class="chakra" id="chakra"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h3 class="mb-4">Celebrating India's Freedom</h3>
+          <p>On this 77th Independence Day, we honor the sacrifices of our freedom fighters and celebrate the progress of our nation. From the struggle for independence to becoming a global IT powerhouse, India's journey inspires us all.</p>
+          <p>At Programming_Jay, we're proud to contribute to India's digital transformation and nurture the next generation of tech talent that will drive our nation forward.</p>
+          
+          <div class="festival-quote">
+            <p class="festival-quote-text">"Long years ago, we made a tryst with destiny, and now the time comes when we shall redeem our pledge, not wholly or in full measure, but very substantially. At the stroke of the midnight hour, when the world sleeps, India will awake to life and freedom."</p>
+            <p class="festival-quote-author">- Jawaharlal Nehru</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Janmashtami Section -->
+  <section class="section janmashtami-theme" id="janmashtami">
+    <div class="container">
+      <h2 class="text-center section-title animate__animated animate__fadeIn">Janmashtami Celebrations</h2>
+      <div class="row mt-5">
+        <div class="col-lg-6 order-lg-1 order-2">
+          <h3 class="mb-4">Celebrating Lord Krishna's Birth</h3>
+          <p>Janmashtami marks the birth of Lord Krishna, the divine charioteer who guided Arjuna in the Bhagavad Gita. His teachings of duty, righteousness, and devotion continue to inspire millions.</p>
+          <p>As we celebrate this auspicious occasion, may Lord Krishna bless you with wisdom, prosperity, and success in all your endeavors.</p>
+          
+          <div class="festival-quote">
+            <p class="festival-quote-text">"Whenever there is a decline in righteousness and an increase in unrighteousness, at that time I manifest myself on earth. For the protection of the good, for the destruction of the wicked, and for the establishment of righteousness, I appear in every age."</p>
+            <p class="festival-quote-author">- Bhagavad Gita 4.7-8</p>
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-2 order-1 mb-5 mb-lg-0">
+          <div class="festival-card janmashtami-card h-100 floating">
+            <img src="https://images.unsplash.com/photo-1600080970381-8b7e8aa10d43?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                 alt="Janmashtami Celebration" class="festival-card-img">
+            <div class="festival-card-body">
+              <span class="festival-card-date">16th August 2024</span>
+              <h3 class="festival-card-title">Janmashtami</h3>
+              <p>Celebrate the divine birth of Lord Krishna with devotion and joy. May his blessings guide your path to success and fulfillment.</p>
+              <i class="fas fa-music flute"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Festival Cards Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center section-title animate__animated animate__fadeIn">Our Festive Wishes</h2>
+      <div class="row g-4 mt-4">
+        <div class="col-lg-6">
+          <div class="festival-card h-100 animate__animated animate__fadeInLeft">
+            <img src="https://images.unsplash.com/photo-1585011650344-c64a17bfe5e8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                 alt="Independence Day" class="festival-card-img">
+            <div class="festival-card-body">
+              <span class="festival-card-date">15th August 2024</span>
+              <h3 class="festival-card-title">Independence Day</h3>
+              <p>Celebrating 77 years of freedom, unity, and progress. May our nation continue to prosper and shine on the global stage.</p>
+              <p class="mt-3"><strong>Team Programming_Jay</strong> salutes the spirit of India!</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="festival-card janmashtami-card h-100 animate__animated animate__fadeInRight">
+            <img src="https://images.unsplash.com/photo-1594819047050-99defca825f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                 alt="Janmashtami" class="festival-card-img">
+            <div class="festival-card-body">
+              <span class="festival-card-date">16th August 2024</span>
+              <h3 class="festival-card-title">Janmashtami</h3>
+              <p>May Lord Krishna's divine wisdom guide your decisions and his blessings bring joy to your life. Wishing you a happy and prosperous Janmashtami.</p>
+              <p class="mt-3">Let's celebrate with devotion and joy!</p>
+              <i class="fas fa-music flute"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/916351240826" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Back to Top Button -->
+  <a href="#" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h3 class="mb-4">Programming_Jay</h3>
+          <p>Providing cutting-edge web solutions and professional training to help businesses and individuals succeed in the digital world.</p>
+          <div class="social-icons mt-4">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h4 class="mb-4">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="/webdev-service-website/index.html">Home</a></li>
+            <li><a href="/webdev-service-website/service.html">Services</a></li>
+            <li><a href="/webdev-service-website/internship.html">Internship</a></li>
+            <li><a href="/webdev-service-website/contact.html">Contact</a></li>
+            <li><a href="/webdev-service-website/about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h4 class="mb-4">Festivals</h4>
+          <ul class="footer-links">
+            <li><a href="#independence-day">Independence Day</a></li>
+            <li><a href="#janmashtami">Janmashtami</a></li>
+            <li><a href="#">Diwali</a></li>
+            <li><a href="#">Holi</a></li>
+            <li><a href="#">New Year</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <h4 class="mb-4">Festival Wishes</h4>
+          <p>Wishing you and your family a very Happy Independence Day and a blessed Janmashtami! May these celebrations bring joy, peace, and prosperity to your life.</p>
+          <div class="mt-4">
+            <img src="/webdev-service-website/assets/img/logo.png" alt="Programming_Jay Logo" style="max-height: 60px;">
+          </div>
+        </div>
+      </div>
+      <hr class="my-5 bg-secondary">
+      <div class="text-center">
+        <p class="mb-0">© <span id="current-year"></span> Programming_Jay. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function () {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+
+      // Back to top button visibility
+      const backToTop = document.querySelector('.back-to-top');
+      if (window.scrollY > 300) {
+        backToTop.classList.add('active');
+      } else {
+        backToTop.classList.remove('active');
+      }
+    });
+
+    // Create Ashoka Chakra spokes
+    const chakra = document.getElementById('chakra');
+    for (let i = 0; i < 24; i++) {
+      const spoke = document.createElement('div');
+      spoke.className = 'spoke';
+      spoke.style.transform = `translate(-50%, -50%) rotate(${i * 15}deg)`;
+      chakra.appendChild(spoke);
+    }
+
+    // Countdown to Independence Day
+    function updateCountdown() {
+      const now = new Date();
+      const currentYear = now.getFullYear();
+      let independenceDate = new Date(currentYear, 7, 15); // August 15 (month is 0-indexed)
+      
+      // If Independence Day has already passed this year, set it for next year
+      if (now > independenceDate) {
+        independenceDate = new Date(currentYear + 1, 7, 15);
+      }
+      
+      const diff = independenceDate - now;
+      
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      document.getElementById('countdown-days').textContent = days.toString().padStart(2, '0');
+      document.getElementById('countdown-hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('countdown-minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('countdown-seconds').textContent = seconds.toString().padStart(2, '0');
+    }
+
+    // Update countdown every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+
+          // Update active nav link
+          document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+          });
+          this.classList.add('active');
+        }
+      });
+    });
+
+    // Back to top button
+    document.querySelector('.back-to-top').addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Set current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Initialize animations when page loads
+    window.onload = function () {
+      // Animate elements when they come into view
+      const animateOnScroll = function() {
+        const elements = document.querySelectorAll('.animate__animated');
+        
+        elements.forEach(element => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          
+          if (elementPosition < windowHeight - 100) {
+            const animation = element.classList.contains('animate__fadeInLeft') ? 'animate__fadeInLeft' :
+                             element.classList.contains('animate__fadeInRight') ? 'animate__fadeInRight' :
+                             'animate__fadeIn';
+            
+            element.classList.add(animation);
+          }
+        });
+      };
+
+      // Run once on load
+      animateOnScroll();
+      
+      // Run on scroll
+      window.addEventListener('scroll', animateOnScroll);
+    };
+  </script>
+</body>
+
+</html>
