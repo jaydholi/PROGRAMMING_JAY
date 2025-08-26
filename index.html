@@ -449,19 +449,41 @@
       box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
     }
 
-    /* Make placeholder text white and fully visible */
-    ::placeholder {
-      color: white !important;
-      opacity: 1;
+    .client-scroll-wrapper {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
     }
 
-    /* For wider browser compatibility */
-    input::placeholder,
-    textarea::placeholder,
-    select::placeholder {
-      color: white !important;
-      opacity: 1;
+    .client-scroll {
+      display: flex;
+      gap: 50px;
+      width: max-content;
+      animation: scrollLeft 30s linear infinite;
     }
+
+    .client-logo {
+      height: 80px;
+      flex-shrink: 0;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .client-logo:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes scrollLeft {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+        /* shift exactly one batch width */
+      }
+    }
+
 
     /* Make input and textarea text color white */
     form input,
@@ -797,44 +819,36 @@
       </div>
     </div>
   </section>
-  <!-- Clients Section -->
   <section class="py-5 bg-dark text-white" id="clients">
     <div class="container text-center">
       <h2 class="mb-4 fw-bold" data-aos="fade-down">Our Top Clients</h2>
-      <div class="row justify-content-center align-items-center g-4">
-        <div class="col-6 col-md-2" data-aos="zoom-in">
-          <img src="/webdev-service-website/assets/img/logo/logo dharmitourism.png" class="img-fluid client-logo"
-            alt="Client 1">
-        </div>
-        <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="100">
-          <img src="/webdev-service-website/assets/img/logo/logo kutch tourism.png" class="img-fluid client-logo"
-            alt="Client 2">
-        </div>
-        <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="200">
-          <img src="/webdev-service-website/assets/img/logo/logo astroakshat.png" class="img-fluid client-logo"
-            alt="Client 3">
-        </div>
-        <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="300">
-          <img src="/webdev-service-website/assets/img/logo/logo khushi taxi .png" class="img-fluid client-logo"
-            alt="Client 4">
-        </div>
-        <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="300">
-          <img src="/webdev-service-website/assets/img/logo/logo raj world.png" class="img-fluid client-logo"
-            alt="Client 4">
-        </div>
-        <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="400">
-          <img src="/webdev-service-website/assets/img/logo/logo kutch car rental.png" class="img-fluid client-logo"
-            alt="Client 5">
-        </div>
-        <div class="col-6 col-md-2" data-aos="zoom-in" data-aos-delay="400">
-          <img src="/webdev-service-website/assets/img/logo/log friends.png" class="img-fluid client-logo"
+
+      <!-- Scrolling Wrapper -->
+      <div class="client-scroll-wrapper">
+        <div class="client-scroll">
+          <!-- Logos (batch 1) -->
+          <img src="/webdev-service-website/assets/img/logo/logo dharmitourism.png" class="client-logo" alt="Client 1">
+          <img src="/webdev-service-website/assets/img/logo/logo kutch tourism.png" class="client-logo" alt="Client 2">
+          <img src="/webdev-service-website/assets/img/logo/logo astroakshat.png" class="client-logo" alt="Client 3">
+          <img src="/webdev-service-website/assets/img/logo/logo khushi taxi .png" class="client-logo" alt="Client 4">
+          <img src="/webdev-service-website/assets/img/logo/logo raj world.png" class="client-logo" alt="Client 5">
+          <img src="/webdev-service-website/assets/img/logo/logo kutch car rental.png" class="client-logo"
             alt="Client 6">
+          <img src="/webdev-service-website/assets/img/logo/log friends.png" class="client-logo" alt="Client 7">
+
+          <!-- Duplicate logos (batch 2 for smooth infinite loop) -->
+          <img src="/webdev-service-website/assets/img/logo/logo dharmitourism.png" class="client-logo" alt="Client 1">
+          <img src="/webdev-service-website/assets/img/logo/logo kutch tourism.png" class="client-logo" alt="Client 2">
+          <img src="/webdev-service-website/assets/img/logo/logo astroakshat.png" class="client-logo" alt="Client 3">
+          <img src="/webdev-service-website/assets/img/logo/logo khushi taxi .png" class="client-logo" alt="Client 4">
+          <img src="/webdev-service-website/assets/img/logo/logo raj world.png" class="client-logo" alt="Client 5">
+          <img src="/webdev-service-website/assets/img/logo/logo kutch car rental.png" class="client-logo"
+            alt="Client 6">
+          <img src="/webdev-service-website/assets/img/logo/log friends.png" class="client-logo" alt="Client 7">
         </div>
       </div>
     </div>
   </section>
-
-
 
   <!-- Contact Section -->
   <section class="section" id="contact">
